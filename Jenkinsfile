@@ -37,8 +37,8 @@ pipeline {
                     url: 'https://github.com/XOXOT/argoCD_yaml.git',
                     branch: 'main'
 
-                sh "sed -i 's/kf-web:.*\$/kf-web:${env.BUILD_NUMBER}/g' kf-deployment/web/deployment.yaml"
-                sh "git add kf-deployment/web/deployment.yaml"
+                sh "sed -i 's/kf-web:.*\$/kf-web:${env.BUILD_NUMBER}/g' kf-frontend/deployment.yaml"
+                sh "git add kf-frontend/deployment.yaml"
                 sh "git commit -m '[UPDATE] kf-web ${env.BUILD_NUMBER} image versioning'"
                 withCredentials([gitUsernamePassword(credentialsId: 'XOXOT')]) {
                     sh "git push -u origin main"
